@@ -1,5 +1,8 @@
 .Search {
   font-family: "Bodoni Moda", serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .Search #thread-search {
@@ -31,6 +34,7 @@
   font-family: "Bodoni Moda", serif;
   margin-left: 0.5rem;
   width: 5rem;
+  font-size: 1.1rem;
 }
 
 .Search #search-button:hover {

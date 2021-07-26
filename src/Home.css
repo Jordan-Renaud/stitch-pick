@@ -1,0 +1,38 @@
+@font-face {
+  font-family: "bodoni_seventytwo_itcregular";
+  src: url("./fonts/bodoni-seventytwo-itc-book-sc-webfont.woff2")
+      format("woff2"),
+    url("./fonts/bodoni-seventytwo-itc-book-sc-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.Home {
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("./images/flowers.png");
+  background-size: cover;
+}
+
+.Home .headings {
+  width: 50vw;
+}
+
+.Home .subheadings {
+  padding-top: 2vh;
+  padding-bottom: 5vh;
+}
+
+.Home h1 {
+  padding-top: 20vh;
+  margin: 0;
+  font-family: "bodoni_seventytwo_itcregular";
+  font-size: 8rem;
+}
+
+.Home p {
+  font-family: "Bodoni Moda", serif;
+  font-size: 1.5rem;
+  margin: 0;
+}
