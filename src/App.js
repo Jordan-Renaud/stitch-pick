@@ -10,25 +10,23 @@ export default function App() {
   return (
     <div className="App">
       <Router>
-        <div>
-          <header>
-            <Link id="home" to="/">
-              Home
-            </Link>
-            <Link id="about" to="/about">
-              About
-            </Link>
-            <Link id="search-patterns" to="/search-patterns">
-              Search Patterns
-            </Link>
-            <Link id="add-pattern" to="/add-pattern">
-              Add Pattern
-            </Link>
-            <Link id="my-threads" to="/my-threads">
-              My Threads
-            </Link>
-          </header>
-        </div>
+        <header className="link-directory">
+          <Link id="home" to="/" className="link">
+            Stitch Pick
+          </Link>
+          <Link id="about" to="/about" className="link">
+            About
+          </Link>
+          <Link id="search-patterns" to="/search-patterns" className="link">
+            Search Patterns
+          </Link>
+          <Link id="add-pattern" to="/add-pattern" className="link">
+            Add Pattern
+          </Link>
+          <Link id="my-threads" to="/my-threads" className="link">
+            My Threads
+          </Link>
+        </header>
 
         <div>
           <Switch>

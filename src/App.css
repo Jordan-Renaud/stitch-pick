@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "bodoni_seventytwo_itcregular";
+  src: url("./fonts/bodoni-seventytwo-itc-book-sc-webfont.woff2")
+      format("woff2"),
+    url("./fonts/bodoni-seventytwo-itc-book-sc-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+}
+
+.App .link-directory {
+  position: fixed;
+  padding-top: 0.5rem;
+}
+
+.App .link {
+  font-family: "bodoni_seventytwo_itcregular";
+  font-size: 1.3rem;
+  margin: 0.5rem;
+  text-decoration: none;
+}
+
+.App .link:visited {
+  color: black;
+}
+
+.App #home {
+  font-size: 2rem;
+  padding-right: 0.5rem;
+  border-right: 2px solid black;
+}
