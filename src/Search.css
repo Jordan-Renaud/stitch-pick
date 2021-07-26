@@ -1,0 +1,38 @@
+.Search {
+  font-family: "Bodoni Moda", serif;
+}
+
+.Search #thread-search {
+  background-color: #e6eff6;
+  width: 15rem;
+  height: 2.5rem;
+  border-radius: 4px;
+  border: none;
+  font-family: "Bodoni Moda", serif;
+  vertical-align: middle;
+  font-size: 1.1rem;
+  color: black;
+  padding-left: 0.5rem;
+}
+
+.Search #thread-search::placeholder {
+  color: black;
+}
+
+.Search #thread-search:focus {
+  outline: none;
+}
+
+.Search #search-button {
+  background-color: #cddfed;
+  height: 2.5rem;
+  border-radius: 4px;
+  border: none;
+  font-family: "Bodoni Moda", serif;
+  margin-left: 0.5rem;
+  width: 5rem;
+}
+
+.Search #search-button:hover {
+  cursor: pointer;
+}
