@@ -1,0 +1,20 @@
+.SearchPatterns {
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("./images/flowers.png");
+  background-size: cover;
+  margin: 0;
+}
+
+.SearchPatterns .search-container {
+  padding-top: 10vh;
+  width: 50%;
+}
+
+.SearchPatterns .flex-container {
+  width: 50%;
+  margin-top: 5vh;
+  display: inline-flex;
+  justify-content: space-evenly;
+}

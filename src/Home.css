@@ -13,6 +13,7 @@
   width: 100vw;
   background-image: url("./images/flowers.png");
   background-size: cover;
+  margin: 0;
 }
 
 .Home .headings {

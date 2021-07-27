@@ -20,8 +20,9 @@
 .App .link {
   font-family: "bodoni_seventytwo_itcregular";
   font-size: 1.3rem;
-  margin: 0.5rem;
+  padding: 0.5rem;
   text-decoration: none;
+  margin: 0;
 }
 
 .App .link:visited {
@@ -32,4 +33,5 @@
   font-size: 2rem;
   padding-right: 0.5rem;
   border-right: 2px solid black;
+  margin-left: 0;
 }
