@@ -5,30 +5,32 @@
 .Thread .darker-container {
   background-color: #cddfed;
   display: flex;
-  width: 8rem;
-  height: 3rem;
+  width: 6rem;
+  height: 2rem;
   justify-content: space-around;
   align-items: center;
 }
 
 .Thread .darker-container p {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .Thread .lighter-container {
   background-color: #e6eff6;
-  width: 8rem;
+  width: 6rem;
   padding-bottom: 0.5rem;
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 .Thread .lighter-container p {
-  text-align: center;
+  min-height: 2.4rem;
   margin: 0;
 }
 
 .Thread .lighter-container .colour {
-  width: 7rem;
-  height: 7rem;
+  width: 5rem;
+  height: 5rem;
   margin: 0 auto;
   border: solid #cddfed;
 }
@@ -36,9 +38,9 @@
 .Thread .blue-square {
   background-color: #e6eff6;
   border: none;
-  height: 2rem;
-  width: 2rem;
-  font-size: 1.5rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  font-size: 1rem;
 }
 
 .Thread button:hover {
