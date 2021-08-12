@@ -23,6 +23,7 @@ export default function Search() {
   }
 
   function sendThread() {
+    setThread("");
     history.push(
       `/search-patterns?${queryString.stringify({
         thread: thread.trim(),
@@ -38,6 +39,7 @@ export default function Search() {
         placeholder="Add threads..."
         onChange={getThread}
         onKeyPress={handleKeypress}
+        value={thread}
       />
       <button id="search-button" onClick={handleClick}>
         Add
