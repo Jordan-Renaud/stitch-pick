@@ -4,7 +4,7 @@ import { threadData } from "./data/threadData";
 import Thread from "./Thread.js";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 export default function SearchPatterns() {
   const location = useLocation();
@@ -26,7 +26,38 @@ export default function SearchPatterns() {
     { name: "818", amount: 1 },
     { name: "819", amount: 1 },
     { name: "820", amount: 1 },
-    { name: "800", amount: 1 },
+    { name: "3713", amount: 1 },
+    { name: "761", amount: 1 },
+    { name: "760", amount: 1 },
+    { name: "3712", amount: 1 },
+    { name: "347", amount: 1 },
+    { name: "353", amount: 1 },
+    { name: "352", amount: 1 },
+    { name: "351", amount: 1 },
+    { name: "350", amount: 1 },
+    { name: "349", amount: 1 },
+    { name: "3708", amount: 1 },
+    { name: "3706", amount: 1 },
+    { name: "3705", amount: 1 },
+    { name: "3801", amount: 1 },
+    { name: "666", amount: 1 },
+    { name: "321", amount: 1 },
+    { name: "3713", amount: 1 },
+    { name: "761", amount: 1 },
+    { name: "760", amount: 1 },
+    { name: "3712", amount: 1 },
+    { name: "347", amount: 1 },
+    { name: "353", amount: 1 },
+    { name: "352", amount: 1 },
+    { name: "351", amount: 1 },
+    { name: "350", amount: 1 },
+    { name: "349", amount: 1 },
+    { name: "3708", amount: 1 },
+    { name: "3706", amount: 1 },
+    { name: "3705", amount: 1 },
+    { name: "3801", amount: 1 },
+    { name: "666", amount: 1 },
+    { name: "321", amount: 1 },
   ];
 
   useEffect(() => {
@@ -50,11 +81,17 @@ export default function SearchPatterns() {
         <Search />
       </div>
       <div className="flex-container">
-        {threads.map((thread, index) => (
-          <div className={`box${index + 1}`}>
-            <Thread threadNumber={thread.name} />
-          </div>
-        ))}
+        {/* change testThreads to threads to be back in normal data */}
+        {testThreads.map((thread, index) => {
+          const shouldSpace =
+            index === 6 || index === 13 || index === 22 || index == 33;
+          return (
+            <React.Fragment key={thread.name}>
+              {shouldSpace ? <div className="col-spacer"></div> : null}
+              <Thread threadNumber={thread.name} />
+            </React.Fragment>
+          );
+        })}
       </div>
     </div>
   );
