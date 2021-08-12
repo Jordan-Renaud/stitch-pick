@@ -35,12 +35,12 @@ export default function Search() {
       <input
         type="search"
         id="thread-search"
-        placeholder="Search threads..."
+        placeholder="Add threads..."
         onChange={getThread}
         onKeyPress={handleKeypress}
       />
       <button id="search-button" onClick={handleClick}>
-        Search
+        Add
       </button>
     </div>
   );
