@@ -1,0 +1,70 @@
+.MyThreads {
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background-image: url("./images/flowers.png");
+  background-size: cover;
+  margin: 0;
+  margin-top: -3rem;
+}
+
+.MyThreads .thread-error {
+  font-family: "Bodoni Moda", serif;
+  font-size: 0.8rem;
+  padding-top: 1rem;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.MyThreads .search-container {
+  padding: 3rem 0 0 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.MyThreads .flex-container {
+  width: 96vw;
+  margin: 2vw;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  row-gap: 1rem;
+}
+
+.MyThreads .col-spacer {
+  grid-column-start: 6;
+  grid-column-end: 13;
+}
+
+.MyThreads .tooltip {
+  position: relative;
+  background-color: #cddfed;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.MyThreads .tooltip:after {
+  content: "";
+  position: absolute;
+
+  /* position tooltip correctly */
+  left: 20%;
+  margin-left: -5px;
+
+  /* vertically center */
+  top: 100%;
+
+  /* the arrow */
+  border: 10px solid #000;
+  border-color: #cddfed transparent transparent transparent;
+
+  display: block;
+}
+
+.MyThreads .tooltip p {
+  margin: 0;
+}
+
+.MyThreads .thread-error.hidden {
+  opacity: 0;
+}
