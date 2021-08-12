@@ -83,6 +83,34 @@ export default function SearchPatterns() {
     }
   }, [location.key]);
 
+  function add(thread) {
+    const existingThreadIndex = threads.findIndex((th) => th.name === thread);
+
+    const updatedThreads = [...threads];
+    updatedThreads[existingThreadIndex] = {
+      name: thread,
+      amount: updatedThreads[existingThreadIndex].amount + 1,
+    };
+
+    setThreads(updatedThreads);
+  }
+
+  function remove(thread) {
+    const existingThreadIndex = threads.findIndex((th) => th.name === thread);
+    const updatedThreads = [...threads];
+    const newAmount = updatedThreads[existingThreadIndex].amount - 1;
+
+    if (newAmount > 0) {
+      updatedThreads[existingThreadIndex] = {
+        name: thread,
+        amount: newAmount,
+      };
+      setThreads(updatedThreads);
+    } else {
+      setThreads(updatedThreads.filter((th) => th.name !== thread));
+    }
+  }
+
   return (
     <div className="SearchPatterns">
       {/* <div className="thread-error">
@@ -95,11 +123,16 @@ export default function SearchPatterns() {
         {/* change testThreads to threads to be back in normal data */}
         {threads.map((thread, index) => {
           const shouldSpace =
-            index === 6 || index === 13 || index === 22 || index == 33;
+            index === 6 || index === 13 || index === 22 || index === 33;
           return (
             <React.Fragment key={thread.name}>
               {shouldSpace ? <div className="col-spacer"></div> : null}
-              <Thread threadNumber={thread.name} amount={thread.amount} />
+              <Thread
+                threadNumber={thread.name}
+                amount={thread.amount}
+                add={add}
+                remove={remove}
+              />
             </React.Fragment>
           );
         })}

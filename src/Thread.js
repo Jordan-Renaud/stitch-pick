@@ -1,25 +1,19 @@
 import "./Thread.css";
 import { threadData } from "./data/threadData";
 
-let threadName = "";
-let hex = "";
-
-export default function Thread(props) {
-  threadData.forEach((thread) => {
-    if (thread.number === props.threadNumber) {
-      threadName = thread.name;
-      hex = thread.hex;
-    }
-  });
+export default function Thread({ threadNumber, amount, add, remove }) {
+  const { name, hex } = threadData.find(
+    (thread) => thread.number === threadNumber
+  );
 
   return (
     <div className="Thread">
       <div className="darker-container">
-        <p>{props.threadNumber}</p>
+        <p>{threadNumber}</p>
       </div>
 
       <div className="lighter-container">
-        <p>{threadName}</p>
+        <p>{name}</p>
         <div
           style={{
             backgroundColor: hex,
@@ -29,13 +23,17 @@ export default function Thread(props) {
       </div>
 
       <div className="darker-container">
-        <button className="blue-square">-</button>
+        <button className="blue-square" onClick={() => remove(threadNumber)}>
+          -
+        </button>
         <input
           type="text"
-          value={props.amount}
+          value={amount}
           className="blue-square thread-input"
         />
-        <button className="blue-square">+</button>
+        <button className="blue-square" onClick={() => add(threadNumber)}>
+          +
+        </button>
       </div>
     </div>
   );
