@@ -8,18 +8,17 @@
 }
 
 .SearchPatterns .thread-error {
-  width: 50vw;
   font-family: "Bodoni Moda", serif;
-  font-size: 0.9rem;
-  padding-top: 5vh;
-  position: relative;
-  left: -3.5rem;
-  top: 1rem;
+  font-size: 0.8rem;
+  padding-top: 1rem;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .SearchPatterns .search-container {
-  width: 50%;
-  padding-top: 5rem;
+  padding: 3rem 0 0 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .SearchPatterns .flex-container {
@@ -33,4 +32,38 @@
 .SearchPatterns .col-spacer {
   grid-column-start: 6;
   grid-column-end: 13;
+}
+
+.SearchPatterns .tooltip {
+  position: relative;
+  background-color: #cddfed;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.SearchPatterns .tooltip:after {
+  content: "";
+  position: absolute;
+
+  /* position tooltip correctly */
+  left: 20%;
+  margin-left: -5px;
+
+  /* vertically center */
+  top: 100%;
+
+  /* the arrow */
+  border: 10px solid #000;
+  border-color: #cddfed transparent transparent transparent;
+
+  display: block;
+}
+
+.SearchPatterns .tooltip p {
+  margin: 0;
+}
+
+.SearchPatterns .thread-error.hidden {
+  opacity: 0;
 }
