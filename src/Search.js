@@ -25,7 +25,7 @@ export default function Search() {
   function sendThread() {
     setThread("");
     history.push(
-      `/search-patterns?${queryString.stringify({
+      `/my-threads?${queryString.stringify({
         thread: thread.trim(),
       })}`
     );
