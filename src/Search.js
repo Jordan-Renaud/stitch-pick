@@ -2,6 +2,8 @@ import "./Search.css";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import queryString from "query-string";
+import { threadData } from "./data/threadData";
+import MiniThread from "./MiniThread";
 
 export default function Search() {
   const [thread, setThread] = useState("");
@@ -33,17 +35,34 @@ export default function Search() {
 
   return (
     <div className="Search">
-      <input
-        type="search"
-        id="thread-search"
-        placeholder="Add threads..."
-        onChange={getThread}
-        onKeyPress={handleKeypress}
-        value={thread}
-      />
-      <button id="search-button" onClick={handleClick}>
-        Add
-      </button>
+      <div>
+        <input
+          type="search"
+          id="thread-search"
+          placeholder="Add threads..."
+          onChange={getThread}
+          onKeyPress={handleKeypress}
+          value={thread}
+        />
+
+        <button id="search-button" onClick={handleClick}>
+          Add
+        </button>
+      </div>
+      <div className="search-popup">
+        {threadData
+          .filter((th) => {
+            if (thread.length >= 2) {
+              return th.number
+                .toLowerCase()
+                .includes(thread.trim().toLowerCase());
+            }
+            return false;
+          })
+          .map((th) => (
+            <MiniThread key={th.number} hex={th.hex} number={th.number} />
+          ))}
+      </div>
     </div>
   );
 }

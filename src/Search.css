@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
 .Search #thread-search {
@@ -39,4 +40,33 @@
 
 .Search #search-button:hover {
   cursor: pointer;
+}
+
+.Search .search-popup {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 0.5rem 0.8rem;
+  background-color: #edf4f4;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.Search .search-popup:after {
+  content: "";
+  position: absolute;
+
+  /* position tooltip correctly */
+  left: 30%;
+  margin-left: -5px;
+
+  /* vertically center */
+  bottom: 100%;
+
+  /* the arrow */
+  border: 10px solid #000;
+  border-color: transparent transparent #edf4f4 transparent;
+
+  display: block;
 }
