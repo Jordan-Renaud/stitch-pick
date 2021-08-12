@@ -10,6 +10,7 @@ export default function SearchPatterns() {
   const location = useLocation();
   let newThread = queryString.parse(location.search).thread;
   const [threads, setThreads] = useState([]);
+  const [isValidThread, setIsValidThread] = useState(true);
 
   let testThreads = [
     { name: "800", amount: 1 },
@@ -64,7 +65,16 @@ export default function SearchPatterns() {
     const foundThread = threadData.find(
       (thread) => thread.number === newThread
     );
-    if (!foundThread) return;
+
+    if (!foundThread && newThread === "") {
+      setIsValidThread(true);
+      return;
+    } else if (!foundThread) {
+      setIsValidThread(false);
+      return;
+    } else {
+      setIsValidThread(true);
+    }
 
     const existingThreadIndex = threads.findIndex(
       (thread) => thread.name === foundThread.number
@@ -113,10 +123,12 @@ export default function SearchPatterns() {
 
   return (
     <div className="SearchPatterns">
-      {/* <div className="thread-error">
-        <p>Please enter a valid DMC thread</p>
-      </div> */}
       <div className="search-container">
+        <div className={`thread-error ${isValidThread ? "hidden" : "visible"}`}>
+          <div className="tooltip">
+            <p>Please enter a valid DMC thread</p>
+          </div>
+        </div>
         <Search />
       </div>
       <div className="flex-container">
