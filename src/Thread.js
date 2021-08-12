@@ -32,7 +32,7 @@ export default function Thread(props) {
         <button className="blue-square">-</button>
         <input
           type="text"
-          defaultValue="1"
+          value={props.amount}
           className="blue-square thread-input"
         />
         <button className="blue-square">+</button>

@@ -61,34 +61,45 @@ export default function SearchPatterns() {
   ];
 
   useEffect(() => {
-    threadData.forEach((thread) => {
-      if (thread.number === newThread) {
-        console.log("found");
+    const foundThread = threadData.find(
+      (thread) => thread.number === newThread
+    );
+    if (!foundThread) return;
 
-        setThreads([...threads, { name: newThread, amount: 1 }]);
-      }
-    });
-  }, [newThread]);
+    const existingThreadIndex = threads.findIndex(
+      (thread) => thread.name === foundThread.number
+    );
 
-  console.log(threads);
+    if (existingThreadIndex === -1) {
+      setThreads([...threads, { name: foundThread.number, amount: 1 }]);
+    } else {
+      const updatedThreads = [...threads];
+      updatedThreads[existingThreadIndex] = {
+        name: foundThread.number,
+        amount: updatedThreads[existingThreadIndex].amount + 1,
+      };
+
+      setThreads(updatedThreads);
+    }
+  }, [location.key]);
 
   return (
     <div className="SearchPatterns">
-      <div className="thread-error">
+      {/* <div className="thread-error">
         <p>Please enter a valid DMC thread</p>
-      </div>
+      </div> */}
       <div className="search-container">
         <Search />
       </div>
       <div className="flex-container">
         {/* change testThreads to threads to be back in normal data */}
-        {testThreads.map((thread, index) => {
+        {threads.map((thread, index) => {
           const shouldSpace =
             index === 6 || index === 13 || index === 22 || index == 33;
           return (
             <React.Fragment key={thread.name}>
               {shouldSpace ? <div className="col-spacer"></div> : null}
-              <Thread threadNumber={thread.name} />
+              <Thread threadNumber={thread.name} amount={thread.amount} />
             </React.Fragment>
           );
         })}

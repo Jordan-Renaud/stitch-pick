@@ -28,7 +28,7 @@ export default function App() {
           </Link>
         </header>
 
-        <div>
+        <div className="content-container">
           <Switch>
             <Route path="/about">
               <About />
