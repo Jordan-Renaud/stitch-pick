@@ -66,7 +66,7 @@ export default function SearchPatterns() {
       (thread) => thread.number === newThread
     );
 
-    if (!foundThread && newThread === "") {
+    if (!foundThread && (newThread === "" || !newThread)) {
       setIsValidThread(true);
       return;
     } else if (!foundThread) {
