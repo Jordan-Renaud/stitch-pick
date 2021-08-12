@@ -5,6 +5,7 @@
   background-image: url("./images/flowers.png");
   background-size: cover;
   margin: 0;
+  margin-top: -3rem;
 }
 
 .SearchPatterns .thread-error {
