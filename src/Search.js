@@ -3,10 +3,12 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import queryString from "query-string";
 import { threadData } from "./data/threadData";
+import { byThread } from "./sorting";
 import MiniThread from "./MiniThread";
 
 export default function Search({ onAddThread }) {
   const [thread, setThread] = useState("");
+  const [isValidThread, setIsValidThread] = useState(true);
   const history = useHistory();
   const searchResults = threadData.filter((th) => {
     if (thread.length >= 2) {
@@ -17,7 +19,19 @@ export default function Search({ onAddThread }) {
 
   function handleClick(event) {
     event.preventDefault();
-    sendThread();
+    const foundThread = threadData.find((th) => th.number === thread);
+
+    if (!foundThread && (thread === "" || !thread)) {
+      setIsValidThread(true);
+      sendThread();
+      return;
+    } else if (!foundThread) {
+      setIsValidThread(false);
+      return;
+    } else {
+      setIsValidThread(true);
+      sendThread();
+    }
   }
 
   function getThread(e) {
@@ -41,6 +55,11 @@ export default function Search({ onAddThread }) {
 
   return (
     <div className="Search">
+      <div className={`thread-error ${isValidThread ? "hidden" : "visible"}`}>
+        <div className="tooltip">
+          <p>Please enter a valid DMC thread</p>
+        </div>
+      </div>
       <div className="flex">
         <input
           type="search"
@@ -60,28 +79,14 @@ export default function Search({ onAddThread }) {
           searchResults.length === 0 ? "hidden" : "visible"
         }`}
       >
-        {searchResults
-          .sort((a, b) => {
-            const aNum = parseInt(a.number, 10);
-            const bNum = parseInt(b.number, 10);
-
-            if (Number.isNaN(aNum) || Number.isNaN(bNum)) {
-              return 0;
-            }
-
-            if (aNum < bNum) return -1;
-            if (aNum > bNum) return 1;
-
-            return 0;
-          })
-          .map((th) => (
-            <MiniThread
-              key={th.number}
-              hex={th.hex}
-              number={th.number}
-              onClick={onAddThread}
-            />
-          ))}
+        {searchResults.sort(byThread).map((th) => (
+          <MiniThread
+            key={th.number}
+            hex={th.hex}
+            number={th.number}
+            onClick={onAddThread}
+          />
+        ))}
       </div>
     </div>
   );
