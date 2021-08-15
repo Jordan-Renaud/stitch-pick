@@ -12,9 +12,21 @@ export default function MyThreads() {
   const [threads, setThreads] = useState([]);
   const [isValidThread, setIsValidThread] = useState(true);
 
+  //to add threads to screen from search
   useEffect(() => {
     handleAddThread(newThread);
   }, [location.key]);
+
+  //to add threads to local storage when threads changes
+  useEffect(() => {
+    if (threads.length === 0) return;
+    localStorage.setItem("threadData", JSON.stringify(threads));
+  }, [threads]);
+
+  useEffect(() => {
+    const data = localStorage.getItem("threadData");
+    setThreads(JSON.parse(data));
+  }, []);
 
   function add(thread) {
     const existingThreadIndex = threads.findIndex((th) => th.name === thread);
