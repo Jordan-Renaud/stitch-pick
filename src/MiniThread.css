@@ -4,6 +4,12 @@
   padding: 0.3rem;
   border-radius: 4px;
   align-items: center;
+  border: 2px solid transparent;
+}
+
+.MiniThread:hover {
+  cursor: pointer;
+  border: 2px solid #b7ccdb;
 }
 
 .MiniThread .colour {

@@ -5,9 +5,15 @@ import queryString from "query-string";
 import { threadData } from "./data/threadData";
 import MiniThread from "./MiniThread";
 
-export default function Search() {
+export default function Search({ onAddThread }) {
   const [thread, setThread] = useState("");
   const history = useHistory();
+  const searchResults = threadData.filter((th) => {
+    if (thread.length >= 2) {
+      return th.number.toLowerCase().includes(thread.trim().toLowerCase());
+    }
+    return false;
+  });
 
   function handleClick(event) {
     event.preventDefault();
@@ -35,7 +41,7 @@ export default function Search() {
 
   return (
     <div className="Search">
-      <div>
+      <div className="flex">
         <input
           type="search"
           id="thread-search"
@@ -49,18 +55,32 @@ export default function Search() {
           Add
         </button>
       </div>
-      <div className="search-popup">
-        {threadData
-          .filter((th) => {
-            if (thread.length >= 2) {
-              return th.number
-                .toLowerCase()
-                .includes(thread.trim().toLowerCase());
+      <div
+        className={`search-popup ${
+          searchResults.length === 0 ? "hidden" : "visible"
+        }`}
+      >
+        {searchResults
+          .sort((a, b) => {
+            const aNum = parseInt(a.number, 10);
+            const bNum = parseInt(b.number, 10);
+
+            if (Number.isNaN(aNum) || Number.isNaN(bNum)) {
+              return 0;
             }
-            return false;
+
+            if (aNum < bNum) return -1;
+            if (aNum > bNum) return 1;
+
+            return 0;
           })
           .map((th) => (
-            <MiniThread key={th.number} hex={th.hex} number={th.number} />
+            <MiniThread
+              key={th.number}
+              hex={th.hex}
+              number={th.number}
+              onClick={onAddThread}
+            />
           ))}
       </div>
     </div>

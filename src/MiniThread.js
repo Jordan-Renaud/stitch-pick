@@ -1,8 +1,8 @@
 import "./MiniThread.css";
 
-export default function MiniThread({ number, hex }) {
+export default function MiniThread({ number, hex, onClick }) {
   return (
-    <div className="MiniThread">
+    <button className="MiniThread" onClick={() => onClick(number)}>
       <div
         style={{
           backgroundColor: hex,
@@ -10,6 +10,6 @@ export default function MiniThread({ number, hex }) {
         className="colour"
       ></div>
       <div className="colour-label">{number}</div>
-    </div>
+    </button>
   );
 }
