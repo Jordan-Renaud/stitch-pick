@@ -41,6 +41,7 @@ export default function Search({ onAddThread }) {
   function handleKeypress(e) {
     if (e.key === "Enter") {
       sendThread();
+      handleClick(e);
     }
   }
 

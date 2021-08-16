@@ -1,7 +1,7 @@
-import "./Home.css";
 import Search from "./Search";
 import { useHistory } from "react-router-dom";
 import queryString from "query-string";
+import "./Home.css";
 
 export default function Home() {
   const history = useHistory();

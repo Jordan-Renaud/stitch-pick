@@ -80,3 +80,45 @@
 .Search .search-popup.hidden {
   opacity: 0;
 }
+
+.Search .thread-error {
+  font-family: "Bodoni Moda", serif;
+  font-size: 0.8rem;
+  padding-top: 1rem;
+  transition: opacity 0.2s ease-in-out;
+  margin-left: -4rem;
+}
+
+.Search .tooltip {
+  position: relative;
+  background-color: #cddfed;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.Search .tooltip:after {
+  content: "";
+  position: absolute;
+
+  /* position tooltip correctly */
+  left: 20%;
+  margin-left: -5px;
+
+  /* vertically center */
+  top: 100%;
+
+  /* the arrow */
+  border: 10px solid #000;
+  border-color: #cddfed transparent transparent transparent;
+
+  display: block;
+}
+
+.Search .tooltip p {
+  margin: 0;
+}
+
+.Search .thread-error.hidden {
+  opacity: 0;
+}
