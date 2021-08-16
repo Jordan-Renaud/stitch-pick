@@ -1,11 +1,15 @@
-import "./App.css";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import "./App.css";
 import Home from "./Home";
 import MyThreads from "./MyThreads";
 import AddPattern from "./AddPattern";
 import SearchPatterns from "./SearchPatterns";
+import useThreads from "./hooks/threads";
 
 export default function App() {
+  const { threads, add, remove, handleAddThread } = useThreads();
+
   return (
     <div className="App">
       <Router>
@@ -28,7 +32,12 @@ export default function App() {
         <div className="content-container">
           <Switch>
             <Route path="/my-threads">
-              <MyThreads />
+              <MyThreads
+                threads={threads}
+                onAddThread={handleAddThread}
+                onAdd={add}
+                onRemove={remove}
+              />
             </Route>
             <Route path="/search-patterns">
               <SearchPatterns />
