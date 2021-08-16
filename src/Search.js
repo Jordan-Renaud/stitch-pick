@@ -5,10 +5,12 @@ import queryString from "query-string";
 import { threadData } from "./data/threadData";
 import { byThread } from "./sorting";
 import MiniThread from "./MiniThread";
+import checkIfThreadIsValid from "./utils/isValidThread";
 
 export default function Search({ onAddThread }) {
   const [thread, setThread] = useState("");
   const [isValidThread, setIsValidThread] = useState(true);
+  const isThreadEmpty = thread.trim().length === 0;
   const history = useHistory();
   const searchResults = threadData.filter((th) => {
     if (thread.length >= 2) {
@@ -19,22 +21,11 @@ export default function Search({ onAddThread }) {
 
   function handleClick(event) {
     event.preventDefault();
-    const foundThread = threadData.find((th) => th.number === thread);
-
-    if (!foundThread && (thread === "" || !thread)) {
-      setIsValidThread(true);
-      sendThread();
-      return;
-    } else if (!foundThread) {
-      setIsValidThread(false);
-      return;
-    } else {
-      setIsValidThread(true);
-      sendThread();
-    }
+    sendThread();
   }
 
   function getThread(e) {
+    setIsValidThread(true);
     setThread(e.target.value);
   }
 
@@ -46,17 +37,26 @@ export default function Search({ onAddThread }) {
   }
 
   function sendThread() {
-    setThread("");
-    history.push(
-      `/my-threads?${queryString.stringify({
-        thread: thread.trim(),
-      })}`
-    );
+    const isValid = checkIfThreadIsValid(thread.trim());
+    setIsValidThread(isValid);
+
+    if (isValid) {
+      setThread("");
+      history.push(
+        `/my-threads?${queryString.stringify({
+          thread: thread.trim(),
+        })}`
+      );
+    }
   }
 
   return (
     <div className="Search">
-      <div className={`thread-error ${isValidThread ? "hidden" : "visible"}`}>
+      <div
+        className={`thread-error ${
+          isThreadEmpty || isValidThread ? "hidden" : "visible"
+        }`}
+      >
         <div className="tooltip">
           <p>Please enter a valid DMC thread</p>
         </div>

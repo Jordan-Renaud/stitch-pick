@@ -2,16 +2,19 @@ import Search from "./Search";
 import { useHistory } from "react-router-dom";
 import queryString from "query-string";
 import "./Home.css";
+import checkIfThreadIsValid from "./utils/isValidThread";
 
 export default function Home() {
   const history = useHistory();
 
   function handleAddThread(threadNumber) {
-    history.push(
-      `/my-threads?${queryString.stringify({
-        thread: threadNumber.trim(),
-      })}`
-    );
+    if (checkIfThreadIsValid(threadNumber)) {
+      history.push(
+        `/my-threads?${queryString.stringify({
+          thread: threadNumber.trim(),
+        })}`
+      );
+    }
   }
 
   return (
